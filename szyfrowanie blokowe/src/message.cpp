@@ -22,28 +22,30 @@ message::message(string message){
 
 
 void message::codeCharacter(int x, char c){
-cMessage[x]=c;
+    cMessage[x]=c;
 }
 
 string message::Show(){
-return cMessage;
+    return cMessage;
 }
 
 void message::tpozition(){
 
 int bytes2[64];
-for (int x=0; x<getnumber(); x++){
-    for(int j=0; j<64; j++){
-        int y=52;
-        bytes2[j]=Block[x].bytes[y];
-        y=y-8;
-        if(y<0) y+=64;
-        if(y==0) y=57;
+    for (int x=0; x<getnumber(); x++){
+        for(int j=0; j<64; j++){
+            int y=52;
+            bytes2[j]=cBlock[x].bytes[y];
+            y=y-8;
+            if(y<0) y+=64;
+            if(y==0) y=57;
+        }
+        for (int i=0; i<64; i++){
+            cBlock[x].bytes[i]=bytes2[i];
+        }
     }
-    Block[x].bytes=bytes2;
-}
 }
 
 int message::getnumber(){
-return number;
+    return number;
 }
